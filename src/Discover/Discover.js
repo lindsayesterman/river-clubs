@@ -56,7 +56,7 @@ export default class Discover extends Component {
       this.state.sortedResults && this.state.sortedResults.length
         ? this.state.sortedResults
         : this.context.clubs;
-        console.log(this.context.clubs);
+    console.log(this.context.clubs);
     return (
       <div className="discover">
         <Header />
@@ -92,11 +92,7 @@ export default class Discover extends Component {
         </select>
         <ul className="disover-clubs">
           {clubs.map((club) => (
-            <Link
-              to={`/clubs/${club.id}`}
-              key={club.id}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={`/clubs/${club.id}`} key={club.id}>
               <Club
                 name={club.name}
                 description={club.description}

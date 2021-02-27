@@ -6,7 +6,7 @@ import Discover from "./Discover/Discover";
 import Post from "./PostPage/PostPage";
 import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
-import config from "./config"
+import config from "./config";
 
 export default class App extends Component {
   constructor(props) {
@@ -20,8 +20,7 @@ export default class App extends Component {
   componentDidMount() {
     return Promise.all([fetch(`${config.API_ENDPOINT}/clubs`)])
       .then(([clubsRes]) => {
-        if (!clubsRes.ok)
-          return clubsRes.json().then((e) => Promise.reject(e));
+        if (!clubsRes.ok) return clubsRes.json().then((e) => Promise.reject(e));
         return Promise.all([clubsRes.json()]);
       })
       .then(([clubs]) => {
@@ -55,9 +54,15 @@ export default class App extends Component {
           <Route exact path="/">
             <Header />
             <h1 className="front-page-descrip">
-              Check out Spanish River Clubs here! Sort clubs by topic or search for a specific one.  
+              Check out Spanish River Clubs here. Search for
+              information on existing clubs or discover new ones. Head to our{" "}
+              <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
-            <img className="sr-logo" alt="sr-logo" src="http://p14cdn4static.sharpschool.com/UserFiles/Servers/Server_1949736/Image/Spanish%20River%20Shark%20mascot_Full.png"></img>
+            <img
+              className="sr-logo"
+              alt="sr-logo"
+              src="http://p14cdn4static.sharpschool.com/UserFiles/Servers/Server_1949736/Image/Spanish%20River%20Shark%20mascot_Full.png"
+            ></img>
           </Route>
           <Route
             path="/discover"
@@ -74,9 +79,7 @@ export default class App extends Component {
           <Route
             path="/clubs/:clubId"
             render={(routeProps) => {
-              return (
-                <ClubPage clubs={context.clubs} {...routeProps} />
-              );
+              return <ClubPage clubs={context.clubs} {...routeProps} />;
             }}
           />
         </div>
