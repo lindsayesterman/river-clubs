@@ -1,0 +1,22 @@
+.container-info {
+    width:60%;
+    margin:0 auto;
+}
+
+.club-page h1.info {
+    text-align:center;
+    padding-bottom:30px;
+    font-weight:400;
+}
+
+.club-page h3.info{
+    margin:40px auto;
+}
+
+
+@media (max-width: 449px) {
+    .container-info{
+        width:85%;
+    }
+  }
+  

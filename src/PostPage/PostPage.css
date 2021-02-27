@@ -1,0 +1,57 @@
+.club-proposal {
+  display: block;
+  margin: 0 auto;
+  padding: 50px 40px;
+  width: 65%;
+  height: 850px;
+  border:1px solid black;
+}
+
+h1.post-h1 {
+  text-align: center;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  height: 30px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+select {
+  height: 50px;
+  width:82%;
+}
+
+textarea {
+  height: 70px;
+  resize: none;
+}
+
+button.btn-post {
+  display: block;
+  margin: 20px auto;
+  width: 60%;
+  height: 30px;
+}
+
+@media (max-width: 600px) {
+  input,
+  textarea,
+  button {
+    width: 90%;
+  }
+
+  select{
+    width:100%;
+  }
+}

@@ -1,0 +1,22 @@
+body {
+  margin-bottom: 100px;
+  color:black;
+}
+
+.app h1.front-page-descrip {
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.app img.sr-logo {
+  display: block;
+  margin: 0 auto;
+  width:500px;
+}
+
+@media (max-width: 500px) {
+  .app h1.front-page-descrip {
+    font-size: 23px;
+  }
+}
