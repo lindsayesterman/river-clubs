@@ -7,6 +7,7 @@ import Post from "./PostPage/PostPage";
 import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
+import srhsLogo from "./srhsLogo.png";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,14 +55,14 @@ export default class App extends Component {
           <Route exact path="/">
             <Header />
             <h1 className="front-page-descrip">
-              Check out Spanish River Clubs here. Search for
-              information on existing clubs or discover new ones. Head to our{" "}
+              Check out Spanish River Clubs here. Search for information on
+              existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
             <img
               className="sr-logo"
               alt="sr-logo"
-              src="http://p14cdn4static.sharpschool.com/UserFiles/Servers/Server_1949736/Image/Spanish%20River%20Shark%20mascot_Full.png"
+              src={srhsLogo}
             ></img>
           </Route>
           <Route

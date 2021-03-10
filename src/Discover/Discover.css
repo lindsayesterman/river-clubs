@@ -5,6 +5,13 @@ select#sort {
   margin: 0 auto;
 }
 
+input#searched {
+  display: block;
+  margin: 0 auto;
+  width:80%;
+  height:50px;
+}
+
 form.searchBar button {
   width: 17%;
   padding: 10px;

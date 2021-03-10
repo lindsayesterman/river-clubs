@@ -40,8 +40,11 @@ export default class Discover extends Component {
     e.preventDefault();
     const { searched } = this.state;
     const clubsFoundFromSearch = (clubs = [], clubName) =>
-      clubs.filter((club) =>
-        club.name.toLowerCase().includes(clubName.toLowerCase())
+      clubs.filter(
+        (club) =>
+          club.name.toLowerCase().includes(clubName.toLowerCase()) ||
+          club.topic.toLowerCase().includes(clubName.toLowerCase()) ||
+          club.description.toLowerCase().includes(clubName.toLowerCase())
       );
     let sortedResults = clubsFoundFromSearch(this.context.clubs, searched);
     this.setState({ sortedResults });

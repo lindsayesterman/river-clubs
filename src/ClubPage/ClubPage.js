@@ -23,8 +23,10 @@ export default class ClubPage extends Component {
         <div className="container-info">
         <h1 className="info">{club.name}</h1>
         <h3 className="info">Description: {club.description.charAt(0).toUpperCase() + club.description.slice(1)}</h3>
-        <h3 className="info">Topic: {club.topic}</h3>
-        <h3 className="info">Meeting Times: {club.day_of_week} at {club.time_of_day}</h3>
+        <h3 className="info">Topic: {club.topic.charAt(0).toUpperCase() + club.topic.slice(1)}</h3>
+        <h3 className="info">Meeting Times: {club.day_of_week.charAt(0).toUpperCase() + club.day_of_week.slice(1)} at {club.time_of_day}</h3>
+        <h3 className="info">Google Classroom Code: {club.google_classroom_code}</h3>
+        <h3 className="info">Remind Code: {club.remind_code}</h3>
         <h3 className="info">Creator: {club.leadership}</h3>
         </div>
       </div>

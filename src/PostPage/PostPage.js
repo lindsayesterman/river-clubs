@@ -36,6 +36,8 @@ export default class Post extends Component {
       leadership: e.target["leadership"].value,
       day_of_week: e.target["day_of_week"].value,
       time_of_day: e.target["time_of_day"].value,
+      google_classroom_code: e.target["google_classroom_code"].value,
+      remind_code: e.target["remind_code"].value,
       date_created: new Date(),
     };
     this.setState({ error: null });
@@ -93,6 +95,7 @@ export default class Post extends Component {
             id="topic"
             value={this.state.value}
             onChange={this.handleSortChange}
+            className="post-select"
           >
             <option value="academic">Academic</option>
             <option value="athletics">Athletics</option>
@@ -108,6 +111,7 @@ export default class Post extends Component {
             id="day_of_week"
             value={this.state.day_of_week}
             onChange={this.handleChangeDay}
+            className="post-select"
           >
             <option value="monday">Monday</option>
             <option value="tuesday">Tuesday</option>
@@ -118,6 +122,7 @@ export default class Post extends Component {
           <label htmlFor="time_of_day">Time:</label>
           <select
             id="time_of_day"
+            className="post-select"
             value={this.state.time_of_day}
             onChange={this.handleChangeTime}
           >
@@ -130,6 +135,20 @@ export default class Post extends Component {
             <option value="5">5 pm</option>
             <option value="6">6 pm</option>
           </select>
+          <label htmlFor="google_classroom_code">Google Classroom Code:</label>
+          <input
+            type="text"
+            name="google_classroom_code"
+            id="google_classroom_code"
+            placeholder="8ftgh9"
+          />
+          <label htmlFor="remind_code">Remind Code:</label>
+          <input
+            type="text"
+            name="remind_code"
+            id="remind_code"
+            placeholder="gwcc2020"
+          />
           <label htmlFor="leadership">
             Leadership (enter names separated by commas):
           </label>
