@@ -8,17 +8,21 @@ import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
 import srhsLogo from "./srhsLogo.png";
+import SchoolsSelector from "./SchoolsSelector/SchoolsSelector";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       clubs: [],
+      schools: [],
+      select: null,
       error: null,
     };
   }
 
   componentDidMount() {
+    this.fetchSchools();
     return Promise.all([fetch(`${config.API_ENDPOINT}/clubs`)])
       .then(([clubsRes]) => {
         if (!clubsRes.ok) return clubsRes.json().then((e) => Promise.reject(e));
@@ -35,6 +39,41 @@ export default class App extends Component {
       });
   }
 
+  fetchSchools = () => {
+    const fetchURL = `https://api.schooldigger.com/v1.2/autocomplete/schools?q=spanish&appID=${config.appID}&appKey=${config.appKey}`;
+    console.log(fetchURL);
+    fetch(`${fetchURL}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        const schools = Object.keys(data).map((school, i) => (
+          <li key={i}>{school.city}</li>
+        ));
+        this.setState({
+          schools,
+          error: null,
+        });
+        console.log(data);
+      })
+      .catch((err) => {
+        this.setState({
+          error: err.message,
+        });
+        console.log(err.message);
+      });
+  };
+
+  setSelected(selected) {
+    this.setState({
+      selected,
+    });
+  }
+
   addClub = (club) => {
     this.setState({
       clubs: [this.state.clubs, club],
@@ -49,6 +88,16 @@ export default class App extends Component {
       },
       setAppData: this.setAppData,
     };
+    // const demon = this.state.selected
+    // ? <Demonym name={this.state.selected['citizen-names']} school={this.state.selected.name}/>
+    // : <div className="demonym_app__placeholder">Select a school above</div>;
+
+    const error = this.state.error ? (
+      <div className="demonym_app__error">{this.state.error}</div>
+    ) : (
+      ""
+    );
+
     return (
       <ClubsContext.Provider value={context}>
         <div className="app">
@@ -59,11 +108,14 @@ export default class App extends Component {
               existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
-            <img
-              className="sr-logo"
-              alt="sr-logo"
-              src={srhsLogo}
-            ></img>
+            <div className="selector">
+              {error}
+              <SchoolsSelector
+                schools={this.state.schools}
+                changeHandler={(selected) => this.setSelected(selected)}
+              />
+            </div>
+            <img className="sr-logo" alt="sr-logo" src={srhsLogo}></img>
           </Route>
           <Route
             path="/discover"
