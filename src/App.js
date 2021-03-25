@@ -40,7 +40,7 @@ export default class App extends Component {
   }
 
   fetchSchools = () => {
-    const fetchURL = `https://api.schooldigger.com/v1.2/autocomplete/schools?q=spanish&appID=${config.appID}&appKey=${config.appKey}`;
+    const fetchURL = `https://api.schooldigger.com/v1.2/schools?st=fl&appID=${config.appID}&appKey=${config.appKey}`;
     console.log(fetchURL);
     fetch(`${fetchURL}`)
       .then((response) => {
@@ -55,10 +55,10 @@ export default class App extends Component {
           <li key={i}>{school.city}</li>
         ));
         this.setState({
-          schools,
+          schools: data.schoolList,
           error: null,
         });
-        console.log(data);
+        console.log(this.state.schools);
       })
       .catch((err) => {
         this.setState({
@@ -88,10 +88,6 @@ export default class App extends Component {
       },
       setAppData: this.setAppData,
     };
-    // const demon = this.state.selected
-    // ? <Demonym name={this.state.selected['citizen-names']} school={this.state.selected.name}/>
-    // : <div className="demonym_app__placeholder">Select a school above</div>;
-
     const error = this.state.error ? (
       <div className="demonym_app__error">{this.state.error}</div>
     ) : (
@@ -108,13 +104,18 @@ export default class App extends Component {
               existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
-            <div className="selector">
+            {/* <div className="selector">
               {error}
               <SchoolsSelector
                 schools={this.state.schools}
                 changeHandler={(selected) => this.setSelected(selected)}
               />
-            </div>
+            </div> */}
+            <select className="form-control">
+              {this.state.schools.map((obj) => (
+                <option value={obj.schoolName}>{obj.schoolName}</option>
+              ))}
+            </select>
             <img className="sr-logo" alt="sr-logo" src={srhsLogo}></img>
           </Route>
           <Route
