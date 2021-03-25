@@ -66,15 +66,18 @@ export default class App extends Component {
 
   setUserInputSchool = (e) => {
     this.setState({ userSchool: e.target.value });
-    this.fetchSchools();
     console.log(this.state.userSchool);
-  }
+  };
 
   clickSchool = (e) => {
     this.setState({ finalSchool: e.target.innerHTML });
     console.log(this.state.finalSchool);
     // alert(`You've selected ${this.state.finalSchool} as your school! Head to the discover page to check out clubs posted there.`)
-  }
+  };
+
+  clickSubmit = (e) => {
+    this.fetchSchools();
+  };
 
   addClub = (club) => {
     this.setState({
@@ -90,6 +93,7 @@ export default class App extends Component {
       },
       setAppData: this.setAppData,
     };
+
     const error = this.state.error ? (
       <div className="demonym_app__error">{this.state.error}</div>
     ) : (
@@ -113,6 +117,9 @@ export default class App extends Component {
               autoComplete="on"
               onChange={(e) => this.setUserInputSchool(e)}
             ></input>
+            <button onClick={(e) => this.clickSubmit(e)} type="submit">
+              Submit
+            </button>
             <div className="school-options">
               {this.state.schools.map((obj, i) => (
                 <button key={i} onClick={(e) => this.clickSchool(e)}>

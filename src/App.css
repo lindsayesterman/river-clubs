@@ -32,6 +32,11 @@ input {
   background-color: #ccc;
 }
 
+button {
+  display: block;
+  margin:0 auto;
+}
+
 .school-options button:hover {
   background-color: green;
 }
