@@ -14,19 +14,26 @@ export default class ClubPage extends Component {
   static contextType = ClubsContext;
 
   makeEachWordUpperCase(str) {
-    return str.replace(/\w\S*/g, function(txt){
+    return str.replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
+    });
   }
 
   // capitalizeFirstLetter(str){
   //     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   // }
 
+  ifNotNull = (f) => {
+    if (f == null) {
+      return null;
+    }
+  };
+
   render() {
     const { clubs = [] } = this.props;
     const { clubId } = this.props.match.params;
     const club = findClub(clubs, parseFloat(clubId));
+    const noInfo = "";
     return (
       <div className="club-page">
         <Header />
@@ -47,9 +54,15 @@ export default class ClubPage extends Component {
             at {club.time_of_day}
           </h3>
           <h3 className="info">
-            Google Classroom Code: {club.google_classroom_code}
+            {club.google_classroom_code.length > 0
+              ? "Google Classroom Code: " + club.google_classroom_code
+              : noInfo}
           </h3>
-          <h3 className="info">Remind Code: {club.remind_code}</h3>
+          <h3 className="info">
+            {club.remind_code.length > 0
+              ? "Remind Code: " + club.remind_code
+              : noInfo}
+          </h3>
           <h3 className="info">
             Creator: {this.makeEachWordUpperCase(club.leadership)}
           </h3>
