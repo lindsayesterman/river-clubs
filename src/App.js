@@ -8,7 +8,6 @@ import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
 import srhsLogo from "./srhsLogo.png";
-import SchoolsSelector from "./SchoolsSelector/SchoolsSelector";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,13 +15,13 @@ export default class App extends Component {
     this.state = {
       clubs: [],
       schools: [],
-      select: null,
       error: null,
+      userSchool: "spanish",
+      finalSchool:""
     };
   }
 
   componentDidMount() {
-    this.fetchSchools();
     return Promise.all([fetch(`${config.API_ENDPOINT}/clubs`)])
       .then(([clubsRes]) => {
         if (!clubsRes.ok) return clubsRes.json().then((e) => Promise.reject(e));
@@ -40,7 +39,7 @@ export default class App extends Component {
   }
 
   fetchSchools = () => {
-    const fetchURL = `https://api.schooldigger.com/v1.2/schools?st=fl&appID=${config.appID}&appKey=${config.appKey}`;
+    const fetchURL = `https://api.schooldigger.com/v1.2/autocomplete/schools?q=${this.state.userSchool}&appID=${config.appID}&appKey=${config.appKey}`;
     console.log(fetchURL);
     fetch(`${fetchURL}`)
       .then((response) => {
@@ -55,7 +54,7 @@ export default class App extends Component {
           <li key={i}>{school.city}</li>
         ));
         this.setState({
-          schools: data.schoolList,
+          schools: data.schoolMatches,
           error: null,
         });
         console.log(this.state.schools);
@@ -68,10 +67,15 @@ export default class App extends Component {
       });
   };
 
-  setSelected(selected) {
-    this.setState({
-      selected,
-    });
+  setUserInputSchool(e) {
+    this.setState({ userSchool: e.target.value });
+    console.log(this.state.userSchool)
+    this.fetchSchools();
+  }
+
+  clickSchool(e){
+    this.setState({finalSchool: e.target.innerHTML})
+    console.log(this.state.finalSchool)
   }
 
   addClub = (club) => {
@@ -104,18 +108,18 @@ export default class App extends Component {
               existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
-            {/* <div className="selector">
-              {error}
-              <SchoolsSelector
-                schools={this.state.schools}
-                changeHandler={(selected) => this.setSelected(selected)}
-              />
-            </div> */}
-            <select className="form-control">
+            <input
+              type="text"
+              name="userSchool"
+              id="userSchool"
+              autoComplete="on"
+              onChange={this.setUserInputSchool.bind(this)}
+            ></input>
+            <div className="school-options">
               {this.state.schools.map((obj) => (
-                <option value={obj.schoolName}>{obj.schoolName}</option>
+                <button onClick={this.clickSchool.bind(this)}>{obj.schoolName}</button>
               ))}
-            </select>
+            </div>
             <img className="sr-logo" alt="sr-logo" src={srhsLogo}></img>
           </Route>
           <Route
