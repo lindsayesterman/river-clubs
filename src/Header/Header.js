@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <div className="nav-bar">
         <Link to="/">
-          <h1 className="title">River Clubs</h1>
+          <h1 className="title">Club Finder</h1>
         </Link>
         <Link to="/discover">
           <h3 className="nav">Discover Clubs</h3>

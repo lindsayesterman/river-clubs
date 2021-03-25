@@ -17,7 +17,7 @@ export default class App extends Component {
       schools: [],
       error: null,
       userSchool: "spanish",
-      finalSchool:""
+      finalSchool: "",
     };
   }
 
@@ -50,9 +50,6 @@ export default class App extends Component {
       })
       .then((response) => response.json())
       .then((data) => {
-        const schools = Object.keys(data).map((school, i) => (
-          <li key={i}>{school.city}</li>
-        ));
         this.setState({
           schools: data.schoolMatches,
           error: null,
@@ -67,15 +64,16 @@ export default class App extends Component {
       });
   };
 
-  setUserInputSchool(e) {
+  setUserInputSchool = (e) => {
     this.setState({ userSchool: e.target.value });
-    console.log(this.state.userSchool)
     this.fetchSchools();
+    console.log(this.state.userSchool);
   }
 
-  clickSchool(e){
-    this.setState({finalSchool: e.target.innerHTML})
-    console.log(this.state.finalSchool)
+  clickSchool = (e) => {
+    this.setState({ finalSchool: e.target.innerHTML });
+    console.log(this.state.finalSchool);
+    // alert(`You've selected ${this.state.finalSchool} as your school! Head to the discover page to check out clubs posted there.`)
   }
 
   addClub = (club) => {
@@ -104,7 +102,7 @@ export default class App extends Component {
           <Route exact path="/">
             <Header />
             <h1 className="front-page-descrip">
-              Check out Spanish River Clubs here. Search for information on
+              Check out your school's clubs here. Search for information on
               existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
@@ -113,14 +111,15 @@ export default class App extends Component {
               name="userSchool"
               id="userSchool"
               autoComplete="on"
-              onChange={this.setUserInputSchool.bind(this)}
+              onChange={(e) => this.setUserInputSchool(e)}
             ></input>
             <div className="school-options">
-              {this.state.schools.map((obj) => (
-                <button onClick={this.clickSchool.bind(this)}>{obj.schoolName}</button>
+              {this.state.schools.map((obj, i) => (
+                <button key={i} onClick={(e) => this.clickSchool(e)}>
+                  {obj.schoolName}
+                </button>
               ))}
             </div>
-            <img className="sr-logo" alt="sr-logo" src={srhsLogo}></img>
           </Route>
           <Route
             path="/discover"
