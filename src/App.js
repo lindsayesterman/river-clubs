@@ -7,7 +7,7 @@ import Post from "./PostPage/PostPage";
 import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
-import srhsLogo from "./srhsLogo.png";
+import SelectSchool from "./SelectSchool/SelectSchool";
 
 export default class App extends Component {
   constructor(props) {
@@ -39,9 +39,16 @@ export default class App extends Component {
   }
 
   fetchSchools = () => {
-    const fetchURL = `https://api.schooldigger.com/v1.2/autocomplete/schools?q=${this.state.userSchool}&appID=${config.appID}&appKey=${config.appKey}`;
+    const fetchURL = `https://api.schooldigger.com/v1.2/schools?st=FL&q=${this.state.userSchool}&appID=${config.appID}&appKey=${config.appKey}`;
+    // const fetchURL = `https://api.greatschools.org/search/schools?key=${config.apiKey}&state=FL&q=${this.state.userSchool}`;
     console.log(fetchURL);
-    fetch(`${fetchURL}`)
+    fetch(`${fetchURL}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -51,7 +58,7 @@ export default class App extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          schools: data.schoolMatches,
+          schools: data.schoolList,
           error: null,
         });
         console.log(this.state.schools);
@@ -93,13 +100,6 @@ export default class App extends Component {
       },
       setAppData: this.setAppData,
     };
-
-    const error = this.state.error ? (
-      <div className="demonym_app__error">{this.state.error}</div>
-    ) : (
-      ""
-    );
-
     return (
       <ClubsContext.Provider value={context}>
         <div className="app">
@@ -110,23 +110,12 @@ export default class App extends Component {
               existing clubs or discover new ones. Head to our{" "}
               <Link to="/discover">Discover</Link> page to browse.{" "}
             </h1>
-            <input
-              type="text"
-              name="userSchool"
-              id="userSchool"
-              autoComplete="on"
-              onChange={(e) => this.setUserInputSchool(e)}
-            ></input>
-            <button onClick={(e) => this.clickSubmit(e)} type="submit">
-              Submit
-            </button>
-            <div className="school-options">
-              {this.state.schools.map((obj, i) => (
-                <button key={i} onClick={(e) => this.clickSchool(e)}>
-                  {obj.schoolName}
-                </button>
-              ))}
-            </div>
+            <SelectSchool
+              setUserInput={(e) => this.setUserInputSchool(e)}
+              clickSchool={(e) => this.clickSchool(e)}
+              clickSubmit={() => this.clickSubmit()}
+              schools={this.state.schools}
+            ></SelectSchool>
           </Route>
           <Route
             path="/discover"
