@@ -16,8 +16,8 @@ export default class App extends Component {
       clubs: [],
       schools: [],
       error: null,
-      userSchool: "spanish",
-      finalSchool: "",
+      userSchool: "",
+      finalSchool: "Spanish River Community High School",
     };
   }
 
@@ -82,7 +82,7 @@ export default class App extends Component {
     // alert(`You've selected ${this.state.finalSchool} as your school! Head to the discover page to check out clubs posted there.`)
   };
 
-  clickSubmit = (e) => {
+  clickSubmit = () => {
     this.fetchSchools();
   };
 
@@ -120,13 +120,13 @@ export default class App extends Component {
           <Route
             path="/discover"
             render={(routeProps) => {
-              return <Discover clubs={context.clubs} {...routeProps} />;
+              return <Discover clubs={context.clubs} school={this.state.finalSchool} {...routeProps} />;
             }}
           />
           <Route
             path="/post"
             render={(routeProps) => {
-              return <Post clubs={context.clubs} {...routeProps} />;
+              return <Post clubs={context.clubs} school={this.state.finalSchool} {...routeProps} />;
             }}
           />
           <Route

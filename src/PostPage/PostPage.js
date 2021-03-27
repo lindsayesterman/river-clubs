@@ -38,6 +38,7 @@ export default class Post extends Component {
       time_of_day: e.target["time_of_day"].value,
       google_classroom_code: e.target["google_classroom_code"].value,
       remind_code: e.target["remind_code"].value,
+      school: this.props.school,
       date_created: new Date(),
     };
     this.setState({ error: null });
