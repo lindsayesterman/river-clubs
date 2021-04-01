@@ -5,7 +5,6 @@ import Club from "../Club/Club";
 import ClubsContext from "../ClubsContext";
 import { Link } from "react-router-dom";
 import { sortBy } from "lodash";
-import { findSchoolClubs, clubsFoundFromSearch} from '../helper.js'
 
 export default class Discover extends Component {
   static contextType = ClubsContext;
@@ -14,34 +13,41 @@ export default class Discover extends Component {
     super(props);
     this.state = {
       value: "old",
-      sortedResults: findSchoolClubs(this.props.clubs, this.props.school) || this.props.clubs,
+      sortedResults: this.props.clubs,
       searched: "",
     };
     this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   handleSortChange(event) {
-    let sorted;
+    let sortedResults;
     const topicClicked = event.target.value;
     if (event.target.value === "recent") {
-      sorted = sortBy(this.state.sortedResults, ["date_created"]).reverse();
+      sortedResults = sortBy(this.context.clubs, ["date_created"]).reverse();
     } else if (event.target.value === "old") {
-      sorted = sortBy(this.state.sortedResults, ["date_created"]);
+      sortedResults = sortBy(this.context.clubs, ["date_created"]);
     } else if (event.target.value === "alpha") {
-      sorted = sortBy(this.state.sortedResults, ["name"]);
+      sortedResults = sortBy(this.context.clubs, ["name"]);
     } else {
       const clubWithTopic = (clubs = [], clubTopic) =>
         clubs.filter((club) => club.topic === clubTopic);
-      sorted = clubWithTopic(this.state.sortedResults, topicClicked);
+      sortedResults = clubWithTopic(this.context.clubs, topicClicked);
     }
-    this.setState({ value: event.target.value, sortedResults:sorted });
+    this.setState({ value: event.target.value, sortedResults });
   }
 
   handleSearchClub = (e) => {
     e.preventDefault();
     const { searched } = this.state;
-    let sorted = clubsFoundFromSearch(this.state.sortedResults, searched);
-    this.setState({ sortedResults:sorted });
+    const clubsFoundFromSearch = (clubs = [], clubName) =>
+      clubs.filter(
+        (club) =>
+          club.name.toLowerCase().includes(clubName.toLowerCase()) ||
+          club.topic.toLowerCase().includes(clubName.toLowerCase()) ||
+          club.description.toLowerCase().includes(clubName.toLowerCase())
+      );
+    let sortedResults = clubsFoundFromSearch(this.context.clubs, searched);
+    this.setState({ sortedResults });
   };
 
   updateSearchHandle = (e) => {
@@ -49,8 +55,11 @@ export default class Discover extends Component {
   };
 
   render() {
-    const schoolClubs = findSchoolClubs(this.context.clubs, this.props.school)
-    const clubs = this.state.sortedResults;
+    const clubs =
+      this.state.sortedResults && this.state.sortedResults.length
+        ? this.state.sortedResults
+        : this.context.clubs;
+    console.log(this.context.clubs);
     return (
       <div className="discover">
         <Header />

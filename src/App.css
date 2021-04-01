@@ -41,6 +41,12 @@ button {
   background-color: green;
 }
 
+img {
+  display: block;
+  margin: 0 auto;
+  width:500px;
+}
+
 @media (max-width: 500px) {
   .app h1.front-page-descrip {
     font-size: 23px;
