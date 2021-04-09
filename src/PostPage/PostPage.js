@@ -49,8 +49,9 @@ export default class Post extends Component {
       },
     })
       .then((res) => {
-        if (!res.ok) {
+        if (!res.ok || e.target["password"].value != config.teacherAuth) {
           return res.json().then((error) => {
+            alert("Incorrect Password. Please try again.");
             throw error;
           });
         }
@@ -158,6 +159,14 @@ export default class Post extends Component {
             name="leadership"
             id="leadership"
             placeholder="Sally E., Sarah F., Sam G."
+          />
+          <label htmlFor="password">Teacher Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password..."
+            required
           />
           <button type="submit" className="btn-post">
             Post
