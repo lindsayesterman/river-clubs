@@ -76,7 +76,7 @@ export default class App extends Component {
           <Route
             path="/clubs/:clubId"
             render={(routeProps) => {
-              return <ClubPage clubs={context.clubs} {...routeProps} />;
+              return <ClubPage clubs={context.clubs}  {...routeProps} />;
             }}
           />
         </div>

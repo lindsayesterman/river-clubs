@@ -58,6 +58,7 @@ export default class Post extends Component {
       })
       .then((data) => {
         this.context.addClub(data);
+        this.props.history.push("/discover");
         window.location.reload();
       })
       .catch((error) => {

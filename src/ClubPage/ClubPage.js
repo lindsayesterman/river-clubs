@@ -30,7 +30,7 @@ export default class ClubPage extends Component {
   };
 
   render() {
-    const { clubs = [] } = this.props;
+    const { clubs = [] } = this.context;
     const { clubId } = this.props.match.params;
     const club = findClub(clubs, parseFloat(clubId));
     const noInfo = "";
