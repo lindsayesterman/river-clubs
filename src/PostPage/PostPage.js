@@ -129,13 +129,37 @@ export default class Post extends Component {
             onChange={this.handleChangeTime}
           >
             <option value="11">11 am</option>
+            <option value="11:15">11:15 am</option>
+            <option value="11:30">11:30 am</option>
+            <option value="11:45">11:45 am</option>
             <option value="12">12 pm</option>
+            <option value="12:15">12:15 pm</option>
+            <option value="12:30">12:30 pm</option>
+            <option value="12:45">12:45 pm</option>
             <option value="1">1 pm</option>
+            <option value="1:15">1:15 pm</option>
+            <option value="1:30">1:30 pm</option>
+            <option value="1:45">1:45 pm</option>
             <option value="2">2 pm</option>
+            <option value="2:15">2:15 pm</option>
+            <option value="2:30">2:30 pm</option>
+            <option value="2:45">2:45 pm</option>
             <option value="3">3 pm</option>
+            <option value="3:15">3:15 pm</option>
+            <option value="3:30">3:30 pm</option>
+            <option value="3:45">3:45 pm</option>
             <option value="4">4 pm</option>
+            <option value="4:15">4:15 pm</option>
+            <option value="4:30">4:30 pm</option>
+            <option value="4:45">4:45 pm</option>
             <option value="5">5 pm</option>
+            <option value="5:15">5:15 pm</option>
+            <option value="5:30">5:30 pm</option>
+            <option value="5:45">5:45 pm</option>
             <option value="6">6 pm</option>
+            <option value="6:15">6:15 pm</option>
+            <option value="6:30">6:30 pm</option>
+            <option value="6:45">6:45 pm</option>
           </select>
           <label htmlFor="google_classroom_code">Google Classroom Code:</label>
           <input
