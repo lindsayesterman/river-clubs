@@ -91,11 +91,11 @@ export default class Discover extends Component {
           <option value="social">Social</option>
           <option value="science">Science</option>
           <option value="work">Work</option>
-          <option value="other">Other</option>
+          <option value="other">Ot`her</option>
         </select>
         <ul className="disover-clubs">
           {clubs.map((club) => (
-            <Link to={`/clubs/${club.id}`} key={club.id}>
+            <Link to={`/clubs/${club.id}`} key={club.id} style={{ textDecoration: 'none' }}>
               <Club
                 name={club.name}
                 description={club.description}

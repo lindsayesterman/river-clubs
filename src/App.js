@@ -7,7 +7,7 @@ import Post from "./PostPage/PostPage";
 import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
-import srhsLogo from './srhsLogo.png'
+import srhsLogo from './srhs-logo.png'
 
 export default class App extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ export default class App extends Component {
             <h1 className="front-page-descrip">
               Check out your school's clubs here. Search for information on
               existing clubs or discover new ones. Head to our{" "}
-              <Link to="/discover">Discover</Link> page to browse.{" "}
+              <Link style={{ textDecoration: 'none', color:"#0000dc" }} to="/discover">Discover</Link> page to browse.{" "}
             </h1>
             <img src={srhsLogo}></img>
           </Route>

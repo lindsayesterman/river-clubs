@@ -64,7 +64,7 @@ export default class ClubPage extends Component {
               : noInfo}
           </h3>
           <h3 className="info">
-            Creator: {this.makeEachWordUpperCase(club.leadership)}
+            Leadership: {this.makeEachWordUpperCase(club.leadership)}
           </h3>
         </div>
       </div>

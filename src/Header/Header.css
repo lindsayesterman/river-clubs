@@ -1,12 +1,20 @@
 h1.title,
-h3.nav {
+h3.right {
   display: inline-block;
   margin: 18px;
+  color:black;
 }
 
-div.nav-bar h3.nav {
+h1.title:hover,
+h3.right:hover {
+  /* color:blue;
+  text-decoration:underline;
+  font-size:20px; */
+}
+
+
+div.nav-bar h3.right {
   float: right;
-  text-decoration: underline;
   margin-top: 15px;
   margin-top: 25px;
 }
