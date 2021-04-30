@@ -91,7 +91,7 @@ export default class Discover extends Component {
           <option value="social">Social</option>
           <option value="science">Science</option>
           <option value="work">Work</option>
-          <option value="other">Ot`her</option>
+          <option value="other">Other</option>
         </select>
         <ul className="disover-clubs">
           {clubs.map((club) => (

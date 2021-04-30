@@ -8,6 +8,10 @@
   box-shadow: 1px 2px 11px 8px rgb(224, 226, 230);
 }
 
+.club:hover{
+  transform: scale(1.03);
+}
+
 .club h1 {
   color:black;
 }

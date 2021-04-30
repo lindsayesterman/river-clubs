@@ -81,6 +81,7 @@ button.btn-post:hover {
   textarea,
   select {
     padding: 0px;
+    width:110%;
   }
 
   textarea,

@@ -8,7 +8,7 @@ body {
 .app h1.front-page-descrip {
   text-align: center;
   width: 70%;
-  margin: 20px auto 50px auto;
+  margin: 15px auto 50px auto;
 }
 
 .app img.sr-logo {
@@ -16,7 +16,6 @@ body {
   margin: 0 auto;
   width: 500px;
 }
-
 
 .testImg {
   box-shadow: 1px 2px 16px 8px rgb(180, 186, 194);
