@@ -1,11 +1,20 @@
 .club {
-  border: 1px solid lightgray;
+  border: none;
   margin: 50px auto;
   width: 60%;
   height: 100%;
   padding: 20px;
+  background-color: white;
+  box-shadow: 1px 2px 11px 8px rgb(224, 226, 230);
 }
 
+.club h1 {
+  color:black;
+}
+
+.club h3 {
+  color:rgb(184, 179, 179);
+}
 
 @media (max-width: 449px) {
   .club h1 {
