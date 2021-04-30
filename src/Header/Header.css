@@ -10,7 +10,6 @@ h3.right:hover {
   color:#2d2df2;
 }
 
-
 div.nav-bar h3.right {
   float: right;
   margin-top: 15px;
@@ -29,13 +28,14 @@ h1.title {
 }
 
 @media (max-width: 500px) {
-  h1.title {
-    font-size: 22px;
-    margin:20px 0px;
+  h1.title,
+  h3.right{
+    margin:6px;
+    font-size:10px;
   }
-  h3.nav {
-    font-size: 16px;
-    margin:10px;
+
+  h3.right{
+    font-size:10px;
   }
   
 }

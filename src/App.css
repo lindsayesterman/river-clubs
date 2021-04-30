@@ -1,8 +1,8 @@
 body {
   margin-bottom: 100px;
   color: black;
-  background-color:whitesmoke;
-  padding-bottom:60px;
+  background-color: whitesmoke;
+  padding-bottom: 60px;
 }
 
 .app h1.front-page-descrip {
@@ -17,11 +17,12 @@ body {
   width: 500px;
 }
 
-.testImg{
+
+.testImg {
   box-shadow: 1px 2px 16px 8px rgb(180, 186, 194);
   display: block;
   margin: 0 auto;
-  width:500px;
+  width: 500px;
 }
 
 input {
@@ -31,17 +32,32 @@ input {
 
 button {
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 img {
   display: block;
   margin: 0 auto;
-  width:500px;
+  width: 500px;
 }
 
 @media (max-width: 500px) {
   .app h1.front-page-descrip {
     font-size: 23px;
   }
+
+ 
+.testImg {
+  box-shadow: 1px 2px 16px 8px rgb(180, 186, 194);
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
+
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
 }
