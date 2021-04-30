@@ -27,7 +27,7 @@ input#searched:focus {
 
 .groupSearch{
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
@@ -44,4 +44,10 @@ form.searchBar button:hover{
   form.searchBar button {
     width: 30%;
   }
+
+  input#searched {
+    width:60%;
+  }
+
+  
 }
