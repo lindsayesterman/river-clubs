@@ -71,10 +71,18 @@ button.btn-post:hover {
   input,
   textarea,
   button {
-    width: 90%;
+    width: 100%;
+  }
+
+  textarea{
+    height:50px;
   }
 
   select{
     width:100%;
+  }
+
+  .club-proposal {
+    width:140px;
   }
 }
