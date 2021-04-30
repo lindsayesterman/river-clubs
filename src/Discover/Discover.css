@@ -42,12 +42,11 @@ form.searchBar button:hover{
 
 @media (max-width: 449px) {
   form.searchBar button {
-    width: 30%;
+    width: 18%;
   }
 
   input#searched {
-    width:60%;
+    width:65%;
   }
 
-  
 }

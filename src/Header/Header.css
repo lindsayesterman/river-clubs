@@ -28,14 +28,13 @@ h1.title {
 }
 
 @media (max-width: 500px) {
-  h1.title,
-  h3.right{
-    margin:6px;
-    font-size:10px;
+  h1.title{
+    font-size:22px;
   }
 
   h3.right{
-    font-size:10px;
+    font-size:12px;
+    margin:6px;
   }
   
 }

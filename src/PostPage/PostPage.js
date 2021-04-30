@@ -76,7 +76,7 @@ export default class Post extends Component {
           onSubmit={(e) => this.handlePostClub(e)}
         >
           <h1 className="post-h1">Post a Club</h1>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Club Name:</label>
           <input
             type="text"
             name="name"
