@@ -7,14 +7,15 @@ import Post from "./PostPage/PostPage";
 import ClubPage from "./ClubPage/ClubPage";
 import ClubsContext from "./ClubsContext";
 import config from "./config";
-import srhsLogo from './srhs-logo.png'
+import srhsLogo from "./srhs-logo.png";
+import Footer from "./Footer/Footer.js";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       clubs: [],
-      error: null
+      error: null,
     };
   }
 
@@ -55,28 +56,48 @@ export default class App extends Component {
           <Route exact path="/">
             <Header />
             <h1 className="front-page-descrip">
-              Check out your school's clubs here. Search for information on
-              existing clubs or discover new ones. Head to our{" "}
-              <Link style={{ textDecoration: 'none', color:"#0000dc" }} to="/discover">Discover</Link> page to browse.{" "}
+              Check out your Spanish River's clubs here. Search for information
+              on existing clubs or discover new ones. Head to our{" "}
+              <Link
+                style={{ textDecoration: "none", color: "#2d2df2" }}
+                to="/discover"
+              >
+                Discover
+              </Link>{" "}
+              page to browse.{" "}
             </h1>
-            <img src={srhsLogo}></img>
+            <div className="testImg">
+              <img src={srhsLogo}></img>
+            </div>
           </Route>
           <Route
             path="/discover"
             render={(routeProps) => {
-              return <Discover clubs={context.clubs} school={this.state.finalSchool} {...routeProps} />;
+              return (
+                <Discover
+                  clubs={context.clubs}
+                  school={this.state.finalSchool}
+                  {...routeProps}
+                />
+              );
             }}
           />
           <Route
             path="/post"
             render={(routeProps) => {
-              return <Post clubs={context.clubs} school={this.state.finalSchool} {...routeProps} />;
+              return (
+                <Post
+                  clubs={context.clubs}
+                  school={this.state.finalSchool}
+                  {...routeProps}
+                />
+              );
             }}
           />
           <Route
             path="/clubs/:clubId"
             render={(routeProps) => {
-              return <ClubPage clubs={context.clubs}  {...routeProps} />;
+              return <ClubPage clubs={context.clubs} {...routeProps} />;
             }}
           />
         </div>

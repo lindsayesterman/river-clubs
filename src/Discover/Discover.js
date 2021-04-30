@@ -64,16 +64,16 @@ export default class Discover extends Component {
       <div className="discover">
         <Header />
         <form className="searchBar" onSubmit={(e) => this.handleSearchClub(e)}>
-          <input
-            type="text"
-            name="searched"
-            id="searched"
-            onChange={this.updateSearchHandle}
-            placeholder="Girls Who Code"
-          ></input>
-          <button className="subSearch" type="submit">
-            Search
-          </button>
+          <div className="groupSearch">
+            <input
+              type="text"
+              name="searched"
+              id="searched"
+              onChange={this.updateSearchHandle}
+              placeholder="Search by club name, topic, or keywords"
+            ></input>
+            <button className="searchBtn">Search</button>
+          </div>
         </form>
         <select
           id="sort"
@@ -95,7 +95,11 @@ export default class Discover extends Component {
         </select>
         <ul className="disover-clubs">
           {clubs.map((club) => (
-            <Link to={`/clubs/${club.id}`} key={club.id} style={{ textDecoration: 'none' }}>
+            <Link
+              to={`/clubs/${club.id}`}
+              key={club.id}
+              style={{ textDecoration: "none" }}
+            >
               <Club
                 name={club.name}
                 description={club.description}

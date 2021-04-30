@@ -1,18 +1,28 @@
 body {
   margin-bottom: 100px;
   color: black;
+  background-color:whitesmoke;
+  padding-bottom:60px;
 }
 
 .app h1.front-page-descrip {
   text-align: center;
-  width: 80%;
-  margin: 20px auto;
+  width: 70%;
+  margin: 20px auto 50px auto;
 }
 
 .app img.sr-logo {
   display: block;
   margin: 0 auto;
   width: 500px;
+  box-shadow: indigo;
+}
+
+.testImg{
+  box-shadow: 1px 2px 16px 8px rgb(180, 186, 194);
+  display: block;
+  margin: 0 auto;
+  width:500px;
 }
 
 input {
@@ -20,25 +30,9 @@ input {
   margin: 40px auto;
 }
 
-.school-options {
-  margin: 20px auto;
-  width:50%;
-}
-
-.school-options button {
-  margin: 10px auto;
-  padding: 10px;
-  width:100%;
-  background-color: #ccc;
-}
-
 button {
   display: block;
   margin:0 auto;
-}
-
-.school-options button:hover {
-  background-color: green;
 }
 
 img {

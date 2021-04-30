@@ -10,7 +10,7 @@ export default class Post extends Component {
     this.state = {
       error: null,
     };
-    this.state = { value: "other", day_of_week: "monday", time_of_day: "12" };
+    this.state = { value: "tech", day_of_week: "monday", time_of_day: "12" };
   }
 
   static contextType = ClubsContext;
@@ -81,7 +81,7 @@ export default class Post extends Component {
             type="text"
             name="name"
             id="name"
-            placeholder="Girls Who Code"
+            placeholder="Enter Club Name"
             required
           />
           <label htmlFor="description">Description:</label>
@@ -89,10 +89,33 @@ export default class Post extends Component {
             type="text"
             name="description"
             id="description"
-            placeholder="Learn how to create websites, code in JavaScript, and make friends!"
+            placeholder="Include a short description about what your club does!"
             required
           />
-          <label htmlFor="topic">Topic:</label>
+          <label htmlFor="google_classroom_code">Google Classroom Code:</label>
+          <input
+            type="text"
+            name="google_classroom_code"
+            id="google_classroom_code"
+            placeholder="Enter Google Classroom Code"
+          />
+          <label htmlFor="remind_code">Remind Code:</label>
+          <input
+            type="text"
+            name="remind_code"
+            id="remind_code"
+            placeholder="Enter Remind Code"
+          />
+          <label htmlFor="leadership">
+            Leadership:
+          </label>
+          <input
+            type="text"
+            name="leadership"
+            id="leadership"
+            placeholder="Include Names Separated by Commas"
+          />
+          <label htmlFor="topic">Club Topic:</label>
           <select
             id="topic"
             value={this.state.value}
@@ -161,35 +184,12 @@ export default class Post extends Component {
             <option value="6:30">6:30 pm</option>
             <option value="6:45">6:45 pm</option>
           </select>
-          <label htmlFor="google_classroom_code">Google Classroom Code:</label>
-          <input
-            type="text"
-            name="google_classroom_code"
-            id="google_classroom_code"
-            placeholder="8ftgh9"
-          />
-          <label htmlFor="remind_code">Remind Code:</label>
-          <input
-            type="text"
-            name="remind_code"
-            id="remind_code"
-            placeholder="gwcc2020"
-          />
-          <label htmlFor="leadership">
-            Leadership (enter names separated by commas):
-          </label>
-          <input
-            type="text"
-            name="leadership"
-            id="leadership"
-            placeholder="Sally E., Sarah F., Sam G."
-          />
           <label htmlFor="password">Teacher Password:</label>
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="Password..."
+            placeholder="Password"
             required
           />
           <button type="submit" className="btn-post">
