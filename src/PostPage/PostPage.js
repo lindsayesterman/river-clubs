@@ -52,6 +52,8 @@ export default class Post extends Component {
         if (!res.ok || e.target["password"].value != config.teacherAuth) {
           return res.json().then((error) => {
             alert("Incorrect Password. Please try again.");
+            console.log(e.target["password"].value);
+            console.log(config.teacherAuth);
             throw error;
           });
         }
@@ -122,14 +124,15 @@ export default class Post extends Component {
             onChange={this.handleSortChange}
             className="post-select"
           >
-            <option value="academic">Academic</option>
-            <option value="athletics">Athletics</option>
-            <option value="art">Art/Music</option>
-            <option value="tech">Computer/Technology</option>
-            <option value="social">Social</option>
-            <option value="science">Science</option>
-            <option value="sork">Work</option>
-            <option value="other">Other</option>
+          <option value="academic">Academic</option>
+          <option value="athletics">Athletics</option>
+          <option value="art">Art/Music</option>
+          {/* <option value="community">Community Service</option> */}
+          <option value="tech">Computer/Technology</option>
+          <option value="social">Social</option>
+          <option value="science">Science</option>
+          <option value="work">Work</option>
+          <option value="other">Other</option>
           </select>
           <label htmlFor="day_of_week">Meeting Day:</label>
           <select

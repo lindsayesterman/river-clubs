@@ -2,12 +2,12 @@ h1.title,
 h3.right {
   display: inline-block;
   margin: 18px;
-  color:black;
+  color: black;
 }
 
 h1.title:hover,
 h3.right:hover {
-  color:#2d2df2;
+  color: #2d2df2;
 }
 
 div.nav-bar h3.right {
@@ -19,22 +19,25 @@ div.nav-bar h3.right {
 h1.title {
   float: left;
   margin-top: 15px;
-  font-weight:400;
-  font-size:35px;
+  font-weight: 400;
+  font-size: 35px;
 }
 
 .nav-bar {
+  /* padding-bottom: 80px;
+  margin-bottom:70px;
+  background-color:white;
+ */
   padding-bottom: 120px;
 }
 
 @media (max-width: 500px) {
-  h1.title{
-    font-size:22px;
+  h1.title {
+    font-size: 22px;
   }
 
-  h3.right{
-    font-size:12px;
-    margin:6px;
+  h3.right {
+    font-size: 12px;
+    margin: 6px;
   }
-  
 }
